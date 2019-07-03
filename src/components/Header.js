@@ -1,6 +1,7 @@
 import { AppBar, Tabs, Tab, Paper } from '@material-ui/core';
 import React, { useState } from 'react';
 import HeaderStyles from '../jss/HeaderStyles';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Header = () => {
   const classes = HeaderStyles();
@@ -25,13 +26,8 @@ const Header = () => {
               textColorPrimary: classes.textColor,
               selected: classes.selected
             }}
-          />
-          <Tab
-            label="Videos"
-            classes={{
-              textColorPrimary: classes.textColor,
-              selected: classes.selected
-            }}
+            component={RouterLink}
+            to="/"
           />
           <Tab
             label="Games"
@@ -39,6 +35,17 @@ const Header = () => {
               textColorPrimary: classes.textColor,
               selected: classes.selected
             }}
+            component={RouterLink}
+            to="/games"
+          />
+          <Tab
+            label="Videos"
+            classes={{
+              textColorPrimary: classes.textColor,
+              selected: classes.selected
+            }}
+            component={RouterLink}
+            to="/videos"
           />
           <Tab
             label="Console"
@@ -46,6 +53,8 @@ const Header = () => {
               textColorPrimary: classes.textColor,
               selected: classes.selected
             }}
+            component={RouterLink}
+            to="/consoles"
           />
         </Tabs>
       </Paper>
