@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import backEnd from '../api/backEnd';
 import GamesStyles from '../jss/GamesStyles';
+import Game from './single/Game';
+import shortid from 'shortid';
+import { CircularProgress, Typography } from '@material-ui/core';
 
 const Games = () => {
   const classes = GamesStyles();
@@ -43,19 +46,31 @@ const Games = () => {
     fetchData();
   }, []);
 
+  const renderProduct = (type) => {
+    if (games[type].length > 0) {
+      return games[type].map((element) => {
+        return <Game key={shortid()} game={element} />;
+      });
+    } else {
+      return <CircularProgress />;
+    }
+  };
+
   return (
     <section className={classes.root}>
+      <Typography variant="h3" align="center" className={classes.typo}>
+        PS4
+      </Typography>
+      <section className={classes.headings}>{renderProduct('ps4')}</section>
+      <Typography variant="h3" align="center" className={classes.typo}>
+        XBOX
+      </Typography>
+      <section className={classes.headings}>{renderProduct('xBox')}</section>
+      <Typography variant="h3" align="center" className={classes.typo}>
+        SWITCH
+      </Typography>
       <section className={classes.headings}>
-        <h1>PS4</h1>
-
-      </section>
-      <section className={classes.headings}>
-        <h1>XBOX</h1>
-
-      </section>
-      <section className={classes.headings}>
-        <h1>SWITCH</h1>
-        
+        {renderProduct("switch")}
       </section>
     </section>
   );

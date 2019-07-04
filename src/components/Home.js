@@ -23,7 +23,6 @@ const Home = () => {
           height: '100vh'
         }}
       />
-      rwarwa
     </section>
   );
 };

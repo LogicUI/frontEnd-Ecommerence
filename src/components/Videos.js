@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import backEnd from '../api/backEnd';
+import { CircularProgress, Typography } from '@material-ui/core';
+import Video from './single/Video';
+import shortid from 'shortid';
 
 const Videos = () => {
   const [videoCard, setVideoCard] = useState([]);
@@ -12,7 +15,20 @@ const Videos = () => {
     fetchData();
   }, []);
 
-  return <section>this is a test</section>;
+  const renderProduct = () => {
+    if (videoCard.length > 0) {
+      return videoCard.map((element) => {
+        return <Video key={shortid()} video={element} />;
+      });
+    } else {
+      return <CircularProgress />;
+    }
+  };
+
+  return <section>
+  {renderProduct()}
+  
+  </section>;
 };
 
 export default Videos;

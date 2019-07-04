@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import backEnd from '../api/backEnd';
+import shortid from 'shortid';
+import { CircularProgress, Typography } from '@material-ui/core';
+import Console from "./single/Console";
 
 const Consoles = () => {
   const [consoleCard, setConsoleCard] = useState([]);
@@ -11,7 +14,21 @@ const Consoles = () => {
     };
     fetchData();
   },[]);
-  return <section>this is a test</section>;
+
+  
+  const renderProduct = () => {
+    if(consoleCard.length > 0){
+        return consoleCard.map(element=> {
+          return <Console key={shortid()} consoleCard={element}/>
+        });
+    } else{
+        return <CircularProgress />
+    }
+  }
+
+    
+
+  return <section>{renderProduct()}</section>;
 };
 
 export default Consoles;
