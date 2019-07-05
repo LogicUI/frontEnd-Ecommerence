@@ -13,7 +13,14 @@ const CartStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(4),
-    outline: 'none'
+    outline: 'none',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column'
+  },
+  buttons: {
+    margin: '1rem 0.5rem'
   }
 }));
 

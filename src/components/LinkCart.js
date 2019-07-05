@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, Badge, Modal, Typography } from '@material-ui/core';
+import { Link, Badge, Modal, Typography, Button } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import { CartStore } from '../global/Cart';
 import CartStyles from '../jss/CartStyles';
@@ -33,14 +33,31 @@ const LinkCart = () => {
         open={open}
         onClose={handleClose}
       >
-        <div style={modalStyle} className={classes.paper}>
+        <section style={modalStyle} className={classes.paper}>
           <Typography variant="h6" id="modal-title">
             Text in a modal
           </Typography>
           <Typography variant="subtitle1" id="simple-modal-description">
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography>
-        </div>
+          <section>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.buttons}
+            >
+              Checkout
+            </Button>
+            <Button
+              className={classes.buttons}
+              variant="contained"
+              color="secondary"
+              onClick={hook.emptyCart}
+            >
+              Empty Cart
+            </Button>
+          </section>
+        </section>
       </Modal>
     </React.Fragment>
   );
