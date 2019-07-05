@@ -19,6 +19,9 @@ const CartStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column'
   },
+  totalPrice:{
+      margin:"2rem 0"
+  },
   buttons: {
     margin: '1rem 0.5rem'
   }

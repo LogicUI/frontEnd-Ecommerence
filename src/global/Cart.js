@@ -4,8 +4,14 @@ export const CartStore = createContext();
 const Cart = (props) => {
   const [cartValue, setCart] = useState(0);
   const [cartItems, setItems] = useState({});
+  const [totalPrice, setTotal] = useState(0);
+
   const incrementCart = () => {
     setCart((prev) => prev + 1);
+  };
+
+  const incrementTotalPrice = (price) => {
+    setTotal((prev) => prev + price);
   };
 
   const addToCart = (name, item) => {
@@ -17,13 +23,10 @@ const Cart = (props) => {
     });
   };
 
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
-
   const emptyCart = () => {
     setItems({});
     setCart(0);
+    setTotal(0);
   };
 
   return (
@@ -33,7 +36,9 @@ const Cart = (props) => {
         incrementCart,
         addToCart,
         emptyCart,
-        cartItems
+        cartItems,
+        incrementTotalPrice,
+        totalPrice
       }}
     >
       {props.children}

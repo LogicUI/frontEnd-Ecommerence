@@ -1,9 +1,18 @@
-import React, { useContext } from 'react';
-import { Link, Badge, Modal, Typography, Button } from '@material-ui/core';
+import React, { useContext, Fragment } from 'react';
+import {
+  Link,
+  Badge,
+  Modal,
+  Typography,
+  Button,
+  Divider
+} from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import { CartStore } from '../global/Cart';
 import CartStyles from '../jss/CartStyles';
 import getModalStyle from '../helpers/helpers';
+import CartModalItem from './single/CartModalItem';
+import shortid from 'shortid';
 
 const LinkCart = () => {
   const classes = CartStyles();
@@ -17,6 +26,18 @@ const LinkCart = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const renderItems = () => {
+    const mapItems = Object.entries(hook.cartItems);
+    return mapItems.map(([title, items]) => {
+      return (
+        <Fragment>
+          <CartModalItem key={shortid()} title={title} items={items} />
+          <Divider variant="fullWidth" />
+        </Fragment>
+      );
+    });
   };
 
   return (
@@ -34,11 +55,14 @@ const LinkCart = () => {
         onClose={handleClose}
       >
         <section style={modalStyle} className={classes.paper}>
-          <Typography variant="h6" id="modal-title">
-            Text in a modal
-          </Typography>
-          <Typography variant="subtitle1" id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          {renderItems()}
+          <Typography
+            variant="h5"
+            align="center"
+            className={classes.totalPrice}
+          >
+            {hook.totalPrice > 0 &&
+              `Total price for checkout is $${hook.totalPrice}`}
           </Typography>
           <section>
             <Button

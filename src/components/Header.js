@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import HeaderStyles from '../jss/HeaderStyles';
 import { Link as RouterLink } from 'react-router-dom';
 import { Store } from '../global/Tabs';
-import {CartStore} from "../global/Cart";
 
 const Header = () => {
   const classes = HeaderStyles();

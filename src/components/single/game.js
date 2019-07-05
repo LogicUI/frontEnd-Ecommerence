@@ -27,7 +27,7 @@ const Game = ({ game }) => {
       setQuantity({
         title: '',
         image: '',
-        price: '',
+        price: 0,
         count: 0
       });
     }
@@ -40,16 +40,21 @@ const Game = ({ game }) => {
   }, [itemDetails]); // eslint-disable-line
 
   const handleOnClick = () => {
-    setQuantity((prev) => {
-      return {
-        ...prev,
-        title: game.title,
-        price: game.price,
-        image: game.image,
-        count: prev.count + 1
-      };
-    });
-    hooks.incrementCart();
+    if (game.quantity > 0) {
+      setQuantity((prev) => {
+        return {
+          ...prev,
+          title: game.title,
+          price: prev.price + parseFloat(game.price),
+          image: game.image,
+          platform: game.platform,
+          type: game.type,
+          count: prev.count + 1
+        };
+      });
+      hooks.incrementCart();
+      hooks.incrementTotalPrice(game.price);
+    }
   };
   return (
     <Card>

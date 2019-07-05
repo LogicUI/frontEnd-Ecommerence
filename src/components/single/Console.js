@@ -8,7 +8,7 @@ const Console = ({ consoleCard }) => {
   const [itemDetails, setQuantity] = useState({
     title: '',
     image: '',
-    price: '',
+    price: 0,
     count: 0
   });
 
@@ -17,13 +17,16 @@ const Console = ({ consoleCard }) => {
       return {
         ...prev,
         title: consoleCard.title,
-        price: consoleCard.price,
+        price: prev.price + parseFloat(consoleCard.price),
         image: consoleCard.image,
+        platform: consoleCard.platform,
+        type: consoleCard.type,
         count: prev.count + 1
       };
     });
 
     hooks.incrementCart();
+    hooks.incrementTotalPrice(consoleCard.price);
   };
 
   useEffect(() => {
@@ -31,7 +34,7 @@ const Console = ({ consoleCard }) => {
       setQuantity({
         title: '',
         image: '',
-        price: '',
+        price: 0,
         count: 0
       });
     }
