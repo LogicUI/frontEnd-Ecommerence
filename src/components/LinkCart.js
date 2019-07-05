@@ -53,6 +53,7 @@ const LinkCart = () => {
         aria-describedby="simple-modal-description"
         open={open}
         onClose={handleClose}
+        className={classes.modal}
       >
         <section style={modalStyle} className={classes.paper}>
           {renderItems()}

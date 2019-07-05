@@ -6,7 +6,7 @@ const CartModalStyles = makeStyles({
     gridTemplateColumns: '1fr 1fr',
     width: '100%',
     height: '100%',
-    margin: '2rem 0'
+    margin: "4rem 0"
   },
   section: {
     display: 'flex',

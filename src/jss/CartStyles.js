@@ -7,6 +7,9 @@ const CartStyles = makeStyles((theme) => ({
     fontSize: '1.5rem',
     padding: '0.5rem'
   },
+  modal: {
+    overflow: 'scroll'
+  },
   paper: {
     position: 'absolute',
     width: 400,
@@ -19,8 +22,8 @@ const CartStyles = makeStyles((theme) => ({
     alignItems: 'center',
     flexDirection: 'column'
   },
-  totalPrice:{
-      margin:"2rem 0"
+  totalPrice: {
+    margin: '2rem 0'
   },
   buttons: {
     margin: '1rem 0.5rem'
