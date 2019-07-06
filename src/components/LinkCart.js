@@ -28,6 +28,7 @@ const LinkCart = () => {
     setOpen(false);
   };
 
+
   const renderItems = () => {
     const mapItems = Object.entries(hook.cartItems);
     return mapItems.map(([title, items]) => {
@@ -62,25 +63,30 @@ const LinkCart = () => {
             align="center"
             className={classes.totalPrice}
           >
+            {hook.totalPrice === 0 && `Your Cart is empty`}
             {hook.totalPrice > 0 &&
               `Total price for checkout is $${hook.totalPrice}`}
           </Typography>
           <section>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.buttons}
-            >
-              Checkout
-            </Button>
-            <Button
-              className={classes.buttons}
-              variant="contained"
-              color="secondary"
-              onClick={hook.emptyCart}
-            >
-              Empty Cart
-            </Button>
+            {hook.totalPrice > 0 && (
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.buttons}
+              >
+                Checkout
+              </Button>
+            )}
+            {hook.totalPrice > 0 && (
+              <Button
+                className={classes.buttons}
+                variant="contained"
+                color="secondary"
+                onClick={hook.emptyCart}
+              >
+                Empty Cart
+              </Button>
+            )}
           </section>
         </section>
       </Modal>
