@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import backEnd from '../api/backEnd';
 import GamesStyles from '../jss/GamesStyles';
-import Game from './single/Game';
+import Game from './singles/GameCard';
 import shortid from 'shortid';
 import { CircularProgress, Typography } from '@material-ui/core';
 

@@ -11,7 +11,7 @@ import { ShoppingCart } from '@material-ui/icons';
 import { CartStore } from '../global/Cart';
 import CartStyles from '../jss/CartStyles';
 import getModalStyle from '../helpers/helpers';
-import CartModalItem from './single/CartModalItem';
+import CartModalItem from './singles/CartModalItem';
 import shortid from 'shortid';
 
 const LinkCart = () => {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import backEnd from '../api/backEnd';
 import shortid from 'shortid';
-import { CircularProgress, Typography } from '@material-ui/core';
-import Console from "./single/Console";
+import { CircularProgress} from '@material-ui/core';
+import Console from "./singles/Console";
 
 const Consoles = () => {
   const [consoleCard, setConsoleCard] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import backEnd from '../api/backEnd';
-import { CircularProgress, Typography } from '@material-ui/core';
-import Video from './single/Video';
+import { CircularProgress} from '@material-ui/core';
+import Video from './singles/Video';
 import shortid from 'shortid';
 
 const Videos = () => {

@@ -11,7 +11,7 @@ import {
 import GameStyle from '../../jss/GameStyle';
 import { CartStore } from '../../global/Cart';
 
-const Game = ({ game }) => {
+const GameCard = ({ game }) => {
   const hooks = useContext(CartStore);
   const classes = GameStyle();
 
@@ -87,4 +87,4 @@ const Game = ({ game }) => {
   );
 };
 
-export default Game;
+export default GameCard;
