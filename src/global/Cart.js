@@ -1,4 +1,4 @@
-import React, { useState, createContext} from 'react';
+import React, { useState, createContext } from 'react';
 
 export const CartStore = createContext();
 const Cart = (props) => {
@@ -15,6 +15,7 @@ const Cart = (props) => {
   };
 
   const addToCart = (name, item) => {
+    console.log(name, item);
     setItems((prev) => {
       return {
         ...prev,

@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import backEnd from '../api/backEnd';
 import GamesStyles from '../jss/GamesStyles';
 import Game from './singles/GameCard';
 import shortid from 'shortid';
 import { CircularProgress, Typography } from '@material-ui/core';
+import { Checkout } from '../global/Checkout';
 
 const Games = () => {
+  const hook = useContext(Checkout);
   const classes = GamesStyles();
   const [games, setGames] = useState({
     xBox: [],
@@ -42,9 +44,10 @@ const Games = () => {
       const result = await backEnd.get('/games');
       const gamesData = mapGames(result.data);
       setGames(gamesData);
+      hook.resetCheckOut();
     };
     fetchData();
-  }, []);
+  }, [hook.checkOutCart]); // eslint-disable-line
 
   const renderProduct = (type) => {
     if (games[type].length > 0) {
@@ -69,9 +72,7 @@ const Games = () => {
       <Typography variant="h3" align="center" className={classes.typo}>
         SWITCH
       </Typography>
-      <section className={classes.headings}>
-        {renderProduct("switch")}
-      </section>
+      <section className={classes.headings}>{renderProduct('switch')}</section>
     </section>
   );
 };

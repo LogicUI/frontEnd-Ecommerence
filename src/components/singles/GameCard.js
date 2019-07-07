@@ -18,9 +18,17 @@ const GameCard = ({ game }) => {
   const [itemDetails, setQuantity] = useState({
     title: '',
     image: '',
-    price: '',
+    price: 0,
     count: 0
   });
+
+  useEffect(() => {
+    if (itemDetails.count > 0) {
+      hooks.addToCart(itemDetails.title, itemDetails);
+      hooks.incrementCart();
+      hooks.incrementTotalPrice(game.price);
+    }
+  }, [itemDetails.count]); // eslint-disable-line
 
   useEffect(() => {
     if (hooks.cartValue === 0) {
@@ -31,31 +39,22 @@ const GameCard = ({ game }) => {
         count: 0
       });
     }
-  }, [hooks.cartValue]);
-
-  useEffect(() => {
-    if (itemDetails.count > 0) {
-      hooks.addToCart(itemDetails.title, itemDetails);
-    }
-  }, [itemDetails]); // eslint-disable-line
+  }, [hooks.cartValue]); // eslint-disable-line
 
   const handleOnClick = () => {
-    if (game.quantity > 0) {
-      setQuantity((prev) => {
-        return {
-          ...prev,
-          title: game.title,
-          price: prev.price + parseFloat(game.price),
-          image: game.image,
-          platform: game.platform,
-          type: game.type,
-          count: prev.count + 1
-        };
-      });
-      hooks.incrementCart();
-      hooks.incrementTotalPrice(game.price);
-    }
+    setQuantity((prev) => {
+      return {
+        ...prev,
+        title: game.title,
+        price: prev.price + parseFloat(game.price),
+        image: game.image,
+        platform: game.platform,
+        type: game.type,
+        count: prev.count + 1
+      };
+    });
   };
+
   return (
     <Card>
       <CardActionArea>
