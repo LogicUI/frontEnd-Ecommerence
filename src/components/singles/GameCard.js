@@ -10,9 +10,11 @@ import {
 } from '@material-ui/core';
 import GameStyle from '../../jss/GameStyle';
 import { CartStore } from '../../global/Cart';
+import { Auth } from '../../global/Authen';
 
 const GameCard = ({ game }) => {
   const hooks = useContext(CartStore);
+  const { auth } = useContext(Auth);
   const classes = GameStyle();
 
   const [itemDetails, setQuantity] = useState({
@@ -78,9 +80,11 @@ const GameCard = ({ game }) => {
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.root}>
-        <Button size="small" color="primary" onClick={handleOnClick}>
-          Add To Cart
-        </Button>
+        {auth && (
+          <Button size="small" color="primary" onClick={handleOnClick}>
+            Add To Cart
+          </Button>
+        )}
       </CardActions>
     </Card>
   );

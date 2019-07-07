@@ -2,9 +2,12 @@ import React, { useContext, useState, useEffect } from 'react';
 import ConsoleStyles from '../../jss/ConsoleStyles';
 import { Typography, Button } from '@material-ui/core';
 import { CartStore } from '../../global/Cart';
+import { Auth } from '../../global/Authen';
 
 const Console = ({ consoleCard }) => {
   const hooks = useContext(CartStore);
+  const { auth } = useContext(Auth);
+
   const [itemDetails, setQuantity] = useState({
     title: '',
     image: '',
@@ -60,9 +63,11 @@ const Console = ({ consoleCard }) => {
         <Typography gutterBottom variant="h6" align="center">
           ${consoleCard.price}
         </Typography>
-        <Button variant="contained" onClick={handleOnClick} color="secondary">
-          Add To Cart
-        </Button>
+        {auth && (
+          <Button variant="contained" onClick={handleOnClick} color="secondary">
+            Add To Cart
+          </Button>
+        )}
       </section>
       <section className={classes.description}>
         <img
