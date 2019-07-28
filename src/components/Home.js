@@ -14,13 +14,13 @@ const Home = () => {
     fetchData();
   }, []);
 
+  console.log(image);
   return (
     <section className={classes.root}>
       <section
         style={{
-          background: `url(${image.image})`,
-          backgroundSize: 'cover',
-          height: '100vh'
+          background: `url(${image.image}) no-repeat center center / cover`,
+          height: '100vh',
         }}
       />
     </section>
