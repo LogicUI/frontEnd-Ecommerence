@@ -23,4 +23,4 @@ shopping cart that allows the user to add items to the cart
 
 # Inspiration
 
-The inspiration come about from many ecommerence pages that are commonly built like lazarda and ebay and wanted to try to build my on ecommerence platform.
+The inspiration come about from many ecommerence pages that are commonly built like lazarda and ebay and there are no ecommerence page specific to games
